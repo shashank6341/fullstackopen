@@ -1,6 +1,6 @@
 const Display = ({ name, count }) => (
   <div>
-    {name} {count}
+    {name} {!isNaN(count) && count} {name == "positive" && !isNaN(count) && "%"}
   </div>
 );
 
