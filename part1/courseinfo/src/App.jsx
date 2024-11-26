@@ -2,17 +2,31 @@ import { useState } from "react";
 import Button from "./Button";
 import Display from "./Display";
 
-const Statistics = ({ good, neutral, bad }) => (
-  <>
-    <h2>statistics</h2>
-    <Display name="good" count={good} />
-    <Display name="neutral" count={neutral} />
-    <Display name="bad" count={bad} />
-    <Display name="all" count={good + neutral + bad} />
-    <Display name="average" count={(good - bad) / (good + neutral + bad)} />
-    <Display name="positive" count={(good / (good + neutral + bad)) * 100} />
-  </>
-);
+const Statistics = ({ good, neutral, bad }) => {
+  return (
+    <>
+      <h2>statistics</h2>
+      {good || neutral || bad ? (
+        <>
+          <Display name="good" count={good} />
+          <Display name="neutral" count={neutral} />
+          <Display name="bad" count={bad} />
+          <Display name="all" count={good + neutral + bad} />
+          <Display
+            name="average"
+            count={(good - bad) / (good + neutral + bad)}
+          />
+          <Display
+            name="positive"
+            count={(good / (good + neutral + bad)) * 100}
+          />
+        </>
+      ) : (
+        <p>No feedback given</p>
+      )}
+    </>
+  );
+};
 
 const App = () => {
   const [good, setGood] = useState(0);
