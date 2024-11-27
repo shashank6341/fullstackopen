@@ -1,24 +1,25 @@
 import { useState } from "react";
 import Button from "./Button";
-import Display from "./Display";
+import StatisticLine from "./StatisticLine";
 
 const Statistics = ({ good, neutral, bad }) => {
   return (
     <>
       <h2>statistics</h2>
+
       {good || neutral || bad ? (
         <>
-          <Display name="good" count={good} />
-          <Display name="neutral" count={neutral} />
-          <Display name="bad" count={bad} />
-          <Display name="all" count={good + neutral + bad} />
-          <Display
-            name="average"
-            count={(good - bad) / (good + neutral + bad)}
+          <StatisticLine text="good" value={good} />
+          <StatisticLine text="neutral" value={neutral} />
+          <StatisticLine text="bad" value={bad} />
+          <StatisticLine text="all" value={good + neutral + bad} />
+          <StatisticLine
+            text="average"
+            value={(good - bad) / (good + neutral + bad)}
           />
-          <Display
-            name="positive"
-            count={(good / (good + neutral + bad)) * 100}
+          <StatisticLine
+            text="positive"
+            value={(good / (good + neutral + bad)) * 100}
           />
         </>
       ) : (
@@ -27,6 +28,36 @@ const Statistics = ({ good, neutral, bad }) => {
     </>
   );
 };
+
+// const Statistics = ({ good, neutral, bad }) => {
+//   return (
+//     <StatisticLine text="good" value={good} />
+//     <StatisticLine text="neutral" value={neutral} />
+//     <StatisticLine text="bad" value={bad} />
+
+//     <>
+//       <h2>statistics</h2>
+//       {good || neutral || bad ? (
+//         <>
+//           <Display name="good" count={good} />
+//           <Display name="neutral" count={neutral} />
+//           <Display name="bad" count={bad} />
+//           <Display name="all" count={good + neutral + bad} />
+//           <Display
+//             name="average"
+//             count={(good - bad) / (good + neutral + bad)}
+//           />
+//           <Display
+//             name="positive"
+//             count={(good / (good + neutral + bad)) * 100}
+//           />
+//         </>
+//       ) : (
+//         <p>No feedback given</p>
+//       )}
+//     </>
+//   );
+// };
 
 const App = () => {
   const [good, setGood] = useState(0);
