@@ -1,7 +1,10 @@
 const StatisticLine = ({ text, value }) => (
-  <div>
-    {text} {!isNaN(value) && value} {text == "positive" && !isNaN(value) && "%"}
-  </div>
+  <tr>
+    <td>{text}</td>
+    <td>
+      {!isNaN(value) && value} {text == "positive" && !isNaN(value) && "%"}
+    </td>
+  </tr>
 );
 
 export default StatisticLine;
